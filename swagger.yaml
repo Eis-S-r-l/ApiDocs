@@ -6,7 +6,7 @@ info:
   contact:
     email: sviluppo@teameis.it
 host: api.eisgroup.it
-basePath: /v2
+basePath: /
 externalDocs:
   description: Find out more about our solutions
   url: https://wiki.teameis.it
