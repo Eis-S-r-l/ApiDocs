@@ -72,7 +72,7 @@ definitions:
   gtwnumbersuccessful:
     type: object
     properties:
-      successful:
+      success:
         type: boolean
   gtwnumber:
     type: object
