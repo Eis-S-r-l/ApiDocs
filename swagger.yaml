@@ -40,7 +40,7 @@ paths:
             $ref: '#/definitions/gtwnumber'
       responses:
         '200':
-          description: successful operation
+          description: Response body
           schema:
             $ref: '#/definitions/gtwnumbersuccessful'
     delete:
@@ -61,9 +61,30 @@ paths:
             $ref: '#/definitions/gtwnumber'
       responses:
         '200':
-          description: successful operation
+          description: Response body
           schema:
             $ref: '#/definitions/gtwnumbersuccessful'
+  /dss/carrier/gtwnumber/exists:
+    get:
+      tags:
+        - carrier
+      summary: Check if number has already been configured
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: JSON object containing the number that we need to check
+          required: true
+          schema:
+            $ref: '#/definitions/gtwnumberexistsbody'
+      responses:
+        '200':
+          description: Response body
+          schema:
+            $ref: '#/definitions/gtwnumberexistsresponse'
   
 securityDefinitions:
   BasicAuth:
@@ -84,4 +105,17 @@ definitions:
         type: integer
         enum: [1,10,100,1000]
         description: Must be one of 1,10,100,1000
+  gtwnumberexistsbody:
+    type: object
+    properties:
+      number:
+        type: string
+  gtwnumberexistsresponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+      body:
+        type: boolean
+        description: Will be set to true if the number is present
 
