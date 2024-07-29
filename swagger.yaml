@@ -1,7 +1,7 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  description: 'These are the APIs to provision and configure services from Eis Service Provider'
-  version: 1.0.6
+  description: "These are the APIs to provision and configure services from Eis Service Provider"
+  version: 1.0.7
   title: Eis Api
   contact:
     email: sviluppo@teameis.it
@@ -26,7 +26,7 @@ paths:
       tags:
         - carrier
       summary: Add new prefix to WxC
-      description: ''
+      description: ""
       consumes:
         - application/json
       produces:
@@ -37,17 +37,17 @@ paths:
           description: JSON object describing the prefix that needs to be added to WxC
           required: true
           schema:
-            $ref: '#/definitions/gtwnumber'
+            $ref: "#/definitions/gtwnumber"
       responses:
-        '200':
+        "200":
           description: Response body
           schema:
-            $ref: '#/definitions/gtwnumbersuccessful'
+            $ref: "#/definitions/gtwnumbersuccessful"
     delete:
       tags:
         - carrier
       summary: Remove existing prefix from WxC
-      description: ''
+      description: ""
       consumes:
         - application/json
       produces:
@@ -58,12 +58,12 @@ paths:
           description: JSON object describing the prefix that needs to be added to WxC
           required: true
           schema:
-            $ref: '#/definitions/gtwnumber'
+            $ref: "#/definitions/gtwnumber"
       responses:
-        '200':
+        "200":
           description: Response body
           schema:
-            $ref: '#/definitions/gtwnumbersuccessful'
+            $ref: "#/definitions/gtwnumbersuccessful"
   /dss/carrier/gtwnumber/exists:
     get:
       tags:
@@ -79,12 +79,12 @@ paths:
           description: JSON object containing the number that we need to check
           required: true
           schema:
-            $ref: '#/definitions/gtwnumberexistsbody'
+            $ref: "#/definitions/gtwnumberexistsbody"
       responses:
-        '200':
+        "200":
           description: Response body
           schema:
-            $ref: '#/definitions/gtwnumberexistsresponse'
+            $ref: "#/definitions/gtwnumberexistsresponse"
   /dss/carrier/gtwnumber/cf:
     put:
       tags:
@@ -103,12 +103,12 @@ paths:
             **cfnumber**: - The number where the calls should we forwarded to
           required: true
           schema:
-            $ref: '#/definitions/gtwnumbercfadd'
+            $ref: "#/definitions/gtwnumbercfadd"
       responses:
-        '200':
+        "200":
           description: Response body
           schema:
-            $ref: '#/definitions/gtwnumbercfresponse'
+            $ref: "#/definitions/gtwnumbercfresponse"
   /dss/carrier/gtwnumber/removecf:
     put:
       tags:
@@ -126,13 +126,13 @@ paths:
             **number**: The number that is currently forwarded
           required: true
           schema:
-            $ref: '#/definitions/gtwnumbercfremove'
+            $ref: "#/definitions/gtwnumbercfremove"
       responses:
-        '200':
+        "200":
           description: Response body
           schema:
-            $ref: '#/definitions/gtwnumbercfresponse'
-  
+            $ref: "#/definitions/gtwnumbercfresponse"
+
 securityDefinitions:
   BasicAuth:
     type: basic
@@ -150,7 +150,7 @@ definitions:
         description: Must be in E.164 format
       size:
         type: integer
-        enum: [1,10,100,1000]
+        enum: [1, 10, 100, 1000]
         description: Must be one of 1,10,100,1000
   gtwnumberexistsbody:
     type: object
@@ -183,4 +183,3 @@ definitions:
       success:
         type: boolean
         description: Will be set to true if the number is present
-
