@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "These are the APIs to provision and configure services from Eis Service Provider"
-  version: 1.0.7
+  version: 1.0.8
   title: Eis Api
   contact:
     email: sviluppo@teameis.it
@@ -100,7 +100,7 @@ paths:
           description: |
             JSON Object with the following parameters:
             **number**: The number that needs to be forwarded
-            **cfnumber**: - The number where the calls should we forwarded to
+            **cfnumber**: - The number where the calls should be forwarded to
           required: true
           schema:
             $ref: "#/definitions/gtwnumbercfadd"
