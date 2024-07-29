@@ -85,6 +85,53 @@ paths:
           description: Response body
           schema:
             $ref: '#/definitions/gtwnumberexistsresponse'
+  /dss/carrier/gtwnumber/cf:
+    put:
+      tags:
+        - carrier
+      summary: Set call forwarding on a per-number basis
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: |
+            JSON Object with the following parameters:
+            **number**: The number that needs to be forwarded
+            **cfnumber**: - The number where the calls should we forwarded to
+          required: true
+          schema:
+            $ref: '#/definitions/gtwnumbercfadd'
+      responses:
+        '200':
+          description: Response body
+          schema:
+            $ref: '#/definitions/gtwnumbercfresponse'
+  /dss/carrier/gtwnumber/removecf:
+    put:
+      tags:
+        - carrier
+      summary: Remove call forwarding on a per-number basis
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: |
+            JSON Object with the following parameters:
+            **number**: The number that is currently forwarded
+          required: true
+          schema:
+            $ref: '#/definitions/gtwnumbercfremove'
+      responses:
+        '200':
+          description: Response body
+          schema:
+            $ref: '#/definitions/gtwnumbercfresponse'
   
 securityDefinitions:
   BasicAuth:
@@ -110,12 +157,30 @@ definitions:
     properties:
       number:
         type: string
+  gtwnumbercfadd:
+    type: object
+    properties:
+      number:
+        type: string
+      cfnumber:
+        type: string
+  gtwnumbercfremove:
+    type: object
+    properties:
+      number:
+        type: string
   gtwnumberexistsresponse:
     type: object
     properties:
       success:
         type: boolean
       body:
+        type: boolean
+        description: Will be set to true if the number is present
+  gtwnumbercfresponse:
+    type: object
+    properties:
+      success:
         type: boolean
         description: Will be set to true if the number is present
 
